@@ -1,0 +1,16 @@
+[
+  {
+    "id": "p1",
+    "title": "Faith & Ecology",
+    "description": "Joint actions for environmental preservation based on shared scriptural ethics.",
+    "category": "Solidarity Action",
+    "status": "Active"
+  },
+  {
+    "id": "p2",
+    "title": "Youth Peace Ambassadors",
+    "description": "Training the next generation of Mumbai's leaders in conflict resolution.",
+    "category": "Education",
+    "status": "Ongoing"
+  }
+]

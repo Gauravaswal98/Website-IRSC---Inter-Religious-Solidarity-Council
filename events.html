@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Events | IRSC Solidarity</title>
+    <link rel="icon" href="assets/images/1.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            deep: '#2D1B4E',
+                            primary: '#6D28D9',
+                            accent: '#F59E0B',
+                            teal: '#00A3B1',
+                            surface: '#FAF9FF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(250, 249, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        #mobile-menu {
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        /* Advanced Hover Animation */
+        .event-card {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-12px) scale(1.02);
+        }
+
+        .event-card img {
+            transition: transform 0.8s scale(1.1);
+        }
+
+        .event-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .event-card .overlay {
+            transition: opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .event-card:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-surface text-brand-deep font-sans antialiased overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full glass-nav z-[110] border-b border-purple-100 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-16 h-16 rounded-full border-2 border-brand-primary p-0.5 overflow-hidden">
+                    <img src="/assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter leading-none">IR<span
+                            class="text-brand-primary">SC</span></span>
+                    <span class="text-[14px] font-bold text-slate-600">Inter-Religious
+                        Solidarity Council</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 font-semibold text-[14px] tracking-wide">
+                <a href="index.html" class="hover:text-brand-primary transition-colors">Home</a>
+                <a href="about.html" class="hover:text-brand-primary transition-colors">About</a>
+                <a href="news.html" class="hover:text-brand-primary transition-colors">News</a>
+                <a href="gallery.html" class="hover:text-brand-primary transition-colors">Gallery</a>
+                <a href="events.html" class="text-brand-primary underline underline-offset-4">Events</a>
+                <a href="volunteer.html" class="hover:text-brand-primary transition-colors">Join Us</a>
+                <a href="contact.html" class="hover:text-brand-primary transition-colors">Contact</a>
+
+                <a href="donate.html"
+                    class="bg-brand-accent text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-orange-200 hover:bg-brand-deep hover:shadow-none transition-all">
+                    Donate
+                </a>
+            </div>
+
+            <button id="menu-toggle" class="lg:hidden p-2 text-brand-deep focus:outline-none" aria-label="Toggle Menu">
+                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-brand-deep z-[105] flex flex-col items-center justify-center -translate-x-full lg:hidden">
+        <div class="flex flex-col gap-8 text-center text-white text-2xl font-bold">
+            <a href="index.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Home</a>
+            <a href="about.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">About</a>
+            <a href="news.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">News</a>
+            <a href="gallery.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Gallery</a>
+            <a href="events.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Events</a>
+            <a href="volunteer.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Join
+                Us</a>
+            <a href="contact.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Contact</a>
+
+            <a href="donate.html"
+                class="bg-brand-accent text-white px-10 py-4 rounded-full shadow-xl shadow-orange-900/20"
+                onclick="toggleMenu()">Donate</a>
+        </div>
+    </div>
+
+    <header class="pt-48 pb-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div class="max-w-3xl">
+            <span class="text-brand-teal font-black text-xs uppercase tracking-[0.3em] mb-4 block">Our Impact
+                Timeline</span>
+            <h1 class="text-5xl md:text-8xl font-black tracking-tight leading-[0.9]">Events for <span
+                    class="text-brand-primary decoration-teal-400">Humanity.</span></h1>
+        </div>
+        <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm max-w-xs">
+            <p class="text-slate-500 text-sm font-medium">We translate the ethical teachings of all religions into
+                actionable peace across Mumbai.</p>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 space-y-32 pb-32">
+
+        <div class="event-card relative rounded-[3rem] overflow-hidden bg-white shadow-2xl group">
+            <div class="grid lg:grid-cols-2">
+                <div class="relative h-[400px] lg:h-[700px] overflow-hidden">
+                    <img src="/assets/images/event/IRSC Advisory-Image-1.jpg" class="w-full h-full object-cover">
+                    <div
+                        class="absolute inset-0 bg-brand-deep/20 group-hover:bg-transparent transition-all duration-500">
+                    </div>
+                </div>
+                <div class="p-10 md:p-20 flex flex-col justify-center">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span
+                            class="w-12 h-12 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-black">01</span>
+                        <span class="font-bold text-slate-400 uppercase tracking-widest text-xs">August, 2025</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">IRSC Advisory Committee Meeting</h2>
+                    <p class="text-slate-500 text-lg mb-10 leading-relaxed">The meeting concluded with a shared
+                        commitment to bridge community gaps through the many ideas and suggestions raised.</p>
+                    <div class="flex gap-4">
+                        <button
+                            class="bg-brand-deep text-white px-10 py-4 rounded-2xl font-bold hover:bg-brand-primary transition-all">Attend
+                            Event</button>
+                        <button
+                            class="w-14 h-14 border border-slate-200 rounded-2xl flex items-center justify-center hover:bg-slate-50 transition-all">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card relative rounded-[3rem] overflow-hidden bg-white shadow-2xl group">
+            <div class="grid lg:grid-cols-2">
+                <div class="p-10 md:p-20 flex flex-col justify-center order-2 lg:order-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span
+                            class="w-12 h-12 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-black">02</span>
+                        <span class="font-bold text-slate-400 uppercase tracking-widest text-xs">April 15, 2026</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Spring Interfaith Solidarity Walk
+                    </h2>
+                    <p class="text-slate-500 text-lg mb-10 leading-relaxed">Walking through the heart of Mumbai, faith
+                        leaders and youth unite to counter hatred with a visible display of communal harmony.</p>
+                    <button
+                        class="w-fit bg-brand-primary text-white px-10 py-4 rounded-2xl font-bold hover:scale-105 transition-all">Join
+                        the Movement</button>
+                </div>
+                <div class="relative h-[400px] lg:h-[700px] overflow-hidden order-1 lg:order-2">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200"
+                        class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card relative rounded-[3rem] overflow-hidden bg-white shadow-2xl group">
+            <div class="grid lg:grid-cols-2">
+                <div class="relative h-[400px] lg:h-[700px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=1200"
+                        class="w-full h-full object-cover">
+                </div>
+                <div class="p-10 md:p-20 flex flex-col justify-center">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span
+                            class="w-12 h-12 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-black">03</span>
+                        <span class="font-bold text-slate-400 uppercase tracking-widest text-xs">May 02, 2026</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Joint Community Relief Drive</h2>
+                    <p class="text-slate-500 text-lg mb-10 leading-relaxed">A collaboration between religious
+                        institutions to provide socially relevant services to the city’s most vulnerable populations.
+                    </p>
+                    <a href="donate.html"
+                        class="w-fit bg-brand-teal text-white px-10 py-4 rounded-2xl font-bold hover:shadow-xl hover:shadow-teal-300/50 transition-all">Support
+                        this Drive</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-12 pt-10">
+            <div class="flex items-center gap-4">
+                <button
+                    class="w-16 h-16 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-white hover:text-brand-primary transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                </button>
+                <span class="font-black text-xl px-4">01 / 04</span>
+                <button
+                    class="w-16 h-16 rounded-full border border-slate-200 flex items-center justify-center text-brand-primary hover:bg-white transition-all shadow-xl shadow-purple-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <button
+                class="group relative px-12 py-6 bg-brand-deep text-white rounded-[2rem] font-bold text-lg overflow-hidden transition-all hover:pr-16">
+                <span class="relative z-10">Load More Events</span>
+                <svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 opacity-0 group-hover:opacity-100 transition-all"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </button>
+        </div>
+
+    </section>
+
+    <section class="bg-brand-deep py-24 px-2 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div class="text-white space-y-8 relative z-10">
+                <h2 class="text-5xl md:text-5xl font-black leading-tight">Why we gather.</h2>
+                <p class="text-white/60 text-xl leading-relaxed">Gathering is an act of resistance against hatred. Every
+                    event we hold is funded by the people, for the people. Your support enables us to keep these
+                    "Circles of Unity" alive in every neighborhood.</p>
+                <div class="grid grid-cols-2 gap-6 pt-1">
+                    <div class="p-4 bg-white/5 rounded-3xl border border-white/10">
+                        <h4 class="text-brand-teal text-3xl font-black mb-1">80%</h4>
+                        <p class="text-xs uppercase font-bold tracking-widest text-white/40">Direct Impact</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-3xl border border-white/10">
+                        <h4 class="text-brand-teal text-3xl font-black mb-1">100+</h4>
+                        <p class="text-xs uppercase font-bold tracking-widest text-white/40">Faith Leaders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-[3rem] p-5 md:p-6 shadow-2xl relative z-10">
+                <h3 class="text-3xl font-black mb-6">Fuel our next event.</h3>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <button
+                            class="flex-1 py-4 rounded-2xl bg-slate-50 border-2 border-brand-teal text-brand-teal font-black">One-time</button>
+                        <button class="flex-1 py-4 rounded-2xl bg-slate-50 font-black text-slate-400">Monthly</button>
+                    </div>
+                    <input type="number" placeholder="Enter Amount (₹)"
+                        class="w-full p-5 bg-slate-50 rounded-2xl border-none outline-none focus:ring-2 focus:ring-brand-teal/20 font-bold text-xl">
+                    <button
+                        class="w-full bg-brand-teal text-white py-3 rounded-2xl font-black text-xl hover:brightness-110 shadow-2xl shadow-teal-500/20 transition-all">Send
+                        Support</button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-primary/20 blur-[100px] rounded-full"></div>
+    </section>
+    <hr>
+
+    <footer class="py-12 sm:py-16 bg-brand-deep text-white">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center lg:flex-row justify-between gap-10 text-center lg:text-left">
+
+            <div class="flex items-center gap-4">
+                <div class="w-20 h-20 rounded-full  border border-white/20">
+                    <img src="/assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
+                </div>
+                <span class="text-lg sm:text-xl font-bold tracking-widest uppercase">IRSC COUNCIL</span>
+            </div>
+
+            <p class="text-purple-300/60 text-xs sm:text-sm font-medium">
+                © 2026 Inter-Religious Solidarity Council. Dignity for All.
+            </p>
+
+            <div class="flex flex-col items-center lg:items-end gap-6">
+                <div
+                    class="flex flex-wrap justify-center gap-6 sm:gap-10 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+                    <a href="#" class="hover:text-brand-teal transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Terms</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Newsletter</a>
+                </div>
+
+                <form
+                    class="flex w-full max-w-sm bg-white/5 border border-white/10 rounded-full p-1 focus-within:border-brand-teal/50 transition-all">
+                    <input type="email" placeholder="Email Address"
+                        class="bg-transparent border-none outline-none px-5 py-2 text-sm w-full placeholder:text-purple-300/30 text-white"
+                        required>
+                    <button type="submit"
+                        class="bg-brand-teal hover:bg-opacity-90 text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-full transition-all">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('-translate-x-full');
+            if (isOpen) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                // Change to Close icon
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+                document.body.classList.add('overflow-hidden'); // Prevent scroll
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                // Change back to Burger icon
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>`;
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>

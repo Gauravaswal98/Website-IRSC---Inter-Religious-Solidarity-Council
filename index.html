@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRSC | Inter-Religious Solidarity Council</title>
+    <link rel="icon" href="assets/images/1.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            deep: '#2D1B4E',    // Royal Purple (Main Text/Footer)
+                            primary: '#6D28D9', // Amethyst (Primary Accent)
+                            teal: '#00A3B1',
+                            accent: '#F59E0B',  // Warm Gold (Action Buttons)
+                            surface: '#FAF9FF', // Subtle Lavender-White Background
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(250, 249, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Mobile menu animation */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Continuous Animation */
+        @keyframes vertical-loop {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .animate-vertical-loop {
+            animation: vertical-loop 15s linear infinite;
+        }
+
+        /* Pause animation on hover of the container */
+        .pause-animation {
+            animation-play-state: paused;
+        }
+
+        /* Custom Scrollbar Design */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            /* slate-200 */
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+            /* slate-300 */
+        }
+
+        /* Ensure scrollable area still shows the full list if paused */
+        .custom-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: #e2e8f0 transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-surface text-brand-deep font-sans antialiased">
+
+    <nav class="fixed top-0 w-full glass-nav z-[110] border-b border-purple-100 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-16 h-16 rounded-full border-2 border-brand-primary p-0.5 overflow-hidden">
+                    <img src="/assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter leading-none">IR<span
+                            class="text-brand-primary">SC</span></span>
+                    <span class="text-[14px] font-bold text-slate-600">Inter-Religious
+                        Solidarity Council</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 font-semibold text-[14px] tracking-wide">
+                <a href="index.html" class="text-brand-primary underline underline-offset-4">Home</a>
+                <a href="about.html" class="hover:text-brand-primary transition-colors">About</a>
+                <a href="news.html" class="hover:text-brand-primary transition-colors">News</a>
+                <a href="gallery.html" class="hover:text-brand-primary transition-colors">Gallery</a>
+                <a href="events.html" class="hover:text-brand-primary transition-colors">Events</a>
+                <a href="volunteer.html" class="hover:text-brand-primary transition-colors">Join Us</a>
+                <a href="contact.html" class="hover:text-brand-primary transition-colors">Contact</a>
+
+                <a href="donate.html"
+                    class="bg-brand-accent text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-orange-200 hover:bg-brand-deep hover:shadow-none transition-all">
+                    Donate
+                </a>
+            </div>
+
+            <button id="menu-toggle" class="lg:hidden p-2 text-brand-deep focus:outline-none" aria-label="Toggle Menu">
+                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-brand-deep z-[105] flex flex-col items-center justify-center -translate-x-full lg:hidden">
+        <div class="flex flex-col gap-8 text-center text-white text-2xl font-bold">
+            <a href="index.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Home</a>
+            <a href="about.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">About</a>
+            <a href="news.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">News</a>
+            <a href="gallery.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Gallery</a>
+            <a href="events.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Events</a>
+            <a href="volunteer.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Join
+                Us</a>
+            <a href="contact.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Contact
+                Us</a>
+
+            <a href="donate.html"
+                class="bg-brand-accent text-white px-10 py-4 rounded-full shadow-xl shadow-orange-900/20"
+                onclick="toggleMenu()">Donate</a>
+        </div>
+    </div>
+
+    <header class="pt-32 sm:pt-38 pb-16 sm:pb-24 px-4 sm:px-6 relative overflow-hidden">
+
+        <div
+            class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-brand-primary/10 blur-[80px] sm:blur-[120px] rounded-full">
+        </div>
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div id="hero-slider"
+                class="relative group rounded-[2rem] md:rounded-[3rem] overflow-hidden aspect-[4/5] md:aspect-[16/10] lg:aspect-[21/9] transition-all duration-500">
+
+                <!-- Slider Wrapper -->
+                <div class="absolute inset-0 w-full h-full">
+                    <!-- Slide 1 (Active) -->
+                    <div class="slide absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out">
+                        <img src="/assets/images/home/1.jpg"
+                            class="w-full h-full object-cover scale-100 transition-transform duration-[10000ms] ease-linear"
+                            alt="Main Story">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="/assets/images/home/2.jpg"
+                            class="w-full h-full object-cover scale-100 transition-transform duration-[10000ms] ease-linear"
+                            alt="Community Projects">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="/assets/images/home/3.jpeg"
+                            class="w-full h-full object-cover scale-100 transition-transform duration-[10000ms] ease-linear"
+                            alt="Global Outreach">
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                        <img src="/assets/images/home/4.jpeg"
+                            class="w-full h-full object-cover scale-100 transition-transform duration-[10000ms] ease-linear"
+                            alt="Education Initiatives">
+                    </div>
+                </div>
+
+                <!-- Enhanced Gradient Overlay: Ensures text legibility over any image -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/50 to-transparent pointer-events-none">
+                </div>
+
+                <!-- Static Content Overlay (Stay fixed as images change) -->
+                <div class="absolute bottom-0 left-0 w-full p-6 sm:p-10 md:p-16 lg:max-w-4xl z-10">
+                    <!-- Category Tag -->
+                    <span
+                        class="px-3 py-1 md:px-4 md:py-1.5 bg-brand-600 text-white text-[10px] md:text-xs font-black uppercase tracking-[0.2em] rounded-full mb-4 md:mb-6 inline-block shadow-lg shadow-brand-600/30">
+                        ESTABLISHED 2024
+                    </span>
+
+                    <!-- Headline -->
+                    <h1
+                        class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 md:mb-6 leading-[1.1] tracking-tighter">
+                        <span class="text-brand-accent">IRSC <br class="hidden sm:block"></span> Inter-Religious<br
+                            class="hidden sm:block">
+                        Solidarity Council
+                    </h1>
+                </div>
+
+                <!-- Slider Pagination Indicators (Optional, but adds to "Professional" look) -->
+                <div class="absolute bottom-6 right-6 md:bottom-10 md:right-16 flex gap-2 z-20">
+                    <div class="dot w-8 h-1 bg-white/20 rounded-full overflow-hidden transition-all duration-00">
+                        <div class="progress w-0 h-full bg-brand-500"></div>
+                    </div>
+                    <div class="dot w-8 h-1 bg-white/20 rounded-full overflow-hidden transition-all duration-300">
+                        <div class="progress w-0 h-full bg-brand-500"></div>
+                    </div>
+                    <div class="dot w-8 h-1 bg-white/20 rounded-full overflow-hidden transition-all duration-300">
+                        <div class="progress w-0 h-full bg-brand-500"></div>
+                    </div>
+                    <div class="dot w-8 h-1 bg-white/20 rounded-full overflow-hidden transition-all duration-300">
+                        <div class="progress w-0 h-full bg-brand-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 sm:gap-16 items-center relative z-10">
+            <div class="space-y-6 sm:space-y-8 text-center lg:text-left">
+                <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold leading-tight tracking-tight">
+                    Faith in <br class="hidden sm:block">
+                    <span class="text-brand-primary">Humanity.</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-brand-deep/70 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    A global movement of diverse faiths working together for social justice, community harmony, and
+                    peace.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6">
+                    <button
+                        class="w-full sm:w-auto bg-brand-deep text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-brand-primary transition-all shadow-xl shadow-purple-200">
+                        Join the Mission
+                    </button>
+                    <a href="#"
+                        class="text-brand-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+                        Learn More <span class="text-xl">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative mt-12 lg:mt-0 px-4 sm:px-0">
+                <!-- Main Interactive Container -->
+                <div
+                    class="relative rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-4 sm:border-[12px] border-white bg-slate-50 h-[450px] sm:h-[600px] flex flex-col">
+
+                    <!-- Header Branding inside the Hub -->
+                    <div
+                        class="p-6 sm:p-8 bg-white/80 backdrop-blur-md border-b border-slate-100 flex justify-between items-center z-20">
+                        <div>
+                            <h3 class="text-slate-900 font-black text-xl sm:text-2xl tracking-tight">Live Hub</h3>
+                            <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mt-1">Updates & Alerts
+                            </p>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                            <span class="w-2 h-2 rounded-full bg-slate-200"></span>
+                        </div>
+                    </div>
+
+                    <!-- Scrolling Notifications Feed -->
+                    <!-- Added 'overflow-y-auto' and custom scrollbar classes for manual scrolling -->
+                    <div
+                        class="flex-1 overflow-y-auto overflow-x-hidden relative bg-slate-50 custom-scrollbar group/feed">
+                        <!-- Continuous Scroll Animation Wrapper -->
+                        <!-- Animation now pauses when the user interacts or hovers -->
+                        <div
+                            class="animate-vertical-loop group-hover/feed:pause-animation flex flex-col gap-4 p-4 sm:p-6">
+
+                            <!-- Notification Card 1 (Event Related) -->
+                            <a href="news.html"
+                                class="block group bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:border-brand-500 transition-all duration-300 transform hover:-translate-y-1">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-[10px] font-black text-brand-600 uppercase tracking-tighter">Just
+                                            Now</span>
+                                        <p class="text-slate-700 font-bold text-sm sm:text-base leading-snug mt-1">New
+                                            clean water project launched in East District.</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Notification Card 2 (Event Related) -->
+                            <a href="events.html"
+                                class="block group bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:border-brand-500 transition-all duration-300 transform hover:-translate-y-1">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-[10px] font-black text-amber-600 uppercase tracking-tighter">Event
+                                            Alert</span>
+                                        <p class="text-slate-700 font-bold text-sm sm:text-base leading-snug mt-1">
+                                            Annual Gala dinner tickets are now 80% sold out.</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Notification Card 3 -->
+                            <a href="events.html"
+                                class="block group bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:border-brand-500 transition-all duration-300 transform hover:-translate-y-1">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-[10px] font-black text-blue-600 uppercase tracking-tighter">Volunteer
+                                            News</span>
+                                        <p class="text-slate-700 font-bold text-sm sm:text-base leading-snug mt-1">
+                                            Welcome to 50 new volunteers joining us this month!</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <div
+                                class="group bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:border-brand-500 transition-all duration-300 transform hover:-translate-y-1 cursor-default">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-[10px] font-black text-blue-600 uppercase tracking-tighter">Volunteer
+                                            News</span>
+                                        <p class="text-slate-700 font-bold text-sm sm:text-base leading-snug mt-1">
+                                            Welcome to 50 new volunteers joining us this month!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Duplicate set for seamless loop -->
+                            <a href="news.html"
+                                class="block group bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:border-brand-500 transition-all duration-300">
+                                <div class="flex gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-2xl bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span
+                                            class="text-[10px] font-black text-brand-600 uppercase tracking-tighter">Archives</span>
+                                        <p class="text-slate-700 font-bold text-sm sm:text-base leading-snug mt-1">2025
+                                            Impact Report is now available for download.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Gradient Fade Out (Bottom) -->
+                        <div
+                            class="sticky bottom-0 left-0 w-full h-24 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none z-10">
+                        </div>
+                    </div>
+
+                    <!-- Latest Featured Event Footer (Pinned) -->
+                    <a href="events.html"
+                        class="block p-6 sm:p-8 bg-brand-600 text-white z-20 hover:bg-brand-700 transition-colors">
+                        <div class="flex items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-purple-600 font-bold text-lg leading-tight">Next Major Event: Global
+                                    Peace
+                                    Summit 2026</h4>
+                                <p
+                                    class="text-teal-500 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1">
+                                    October 12-15 • Mumbai</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 flex items-center justify-center bg-purple-100 rounded-2xl shadow-sm group-hover/footer:bg-[#7C3AED] group-hover/footer:text-white transition-all duration-300 transform group-hover/footer:scale-110">
+                                <svg class="w-6 h-6 text-[#7C3AED] group-hover/footer:text-white transition-colors"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Decorative Elements for "Advanced" look -->
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-brand-400/20 blur-3xl rounded-full -z-10"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-400/20 blur-3xl rounded-full -z-10"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-brand-deep text-white py-12 sm:py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div class="space-y-1 sm:border-r border-white/10 last:border-0 pb-4 sm:pb-0">
+                <div class="text-5xl sm:text-6xl font-extrabold text-brand-accent">12</div>
+                <p class="text-purple-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs">Faith Councils</p>
+            </div>
+            <div class="space-y-1 sm:border-r border-white/10 last:border-0 pb-4 sm:pb-0">
+                <div class="text-5xl sm:text-6xl font-extrabold text-brand-accent">85k</div>
+                <p class="text-purple-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs">Lives Impacted</p>
+            </div>
+            <div class="space-y-1 sm:border-r border-white/10 last:border-0 pb-4 sm:pb-0">
+                <div class="text-5xl sm:text-6xl font-extrabold text-brand-accent">30+</div>
+                <p class="text-purple-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs">Global Partners
+                </p>
+            </div>
+            <div class="space-y-1">
+                <div class="text-5xl sm:text-6xl font-extrabold text-brand-accent">100%</div>
+                <p class="text-purple-200 font-bold uppercase tracking-widest text-[10px] sm:text-xs">Commitment</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 sm:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div
+                class="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-12 sm:mb-20 gap-6 text-center lg:text-left">
+                <div class="space-y-4">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Core Priorities</h2>
+                    <div class="w-24 h-2 bg-brand-accent rounded-full mx-auto lg:mx-0"></div>
+                </div>
+                <p class="text-brand-deep/60 max-w-sm text-base sm:text-lg">We focus on building bridges that can
+                    withstand the weight of modern challenges.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
+                <div
+                    class="bg-brand-surface p-8 sm:p-10 rounded-[30px] sm:rounded-[40px] hover:bg-brand-primary hover:text-white transition-all duration-500 group">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-brand-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Harmony</h3>
+                    <p class="opacity-70 leading-relaxed text-sm sm:text-base">Fostering deep understanding and respect
+                        across diverse spiritual traditions.</p>
+                </div>
+
+                <div
+                    class="bg-brand-surface p-8 sm:p-10 rounded-[30px] sm:rounded-[40px] hover:bg-brand-primary hover:text-white transition-all duration-500 group">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-brand-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Protection</h3>
+                    <p class="opacity-70 leading-relaxed text-sm sm:text-base">Protecting marginalized groups from
+                        supremacy and ideological division.</p>
+                </div>
+
+                <div
+                    class="bg-brand-surface p-8 sm:p-10 rounded-[30px] sm:rounded-[40px] hover:bg-brand-primary hover:text-white transition-all duration-500 group sm:col-span-2 lg:col-span-1">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8 text-brand-primary" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Mobilization</h3>
+                    <p class="opacity-70 leading-relaxed text-sm sm:text-base">Activating multi-faith resources for
+                        immediate relief and sustainable justice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 sm:py-16 bg-brand-deep text-white">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center lg:flex-row justify-between gap-10 text-center lg:text-left">
+
+            <div class="flex items-center gap-4">
+                <div class="w-20 h-20 rounded-full  border border-white/20">
+                    <img src="/assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
+                </div>
+                <span class="text-lg sm:text-xl font-bold tracking-widest uppercase">IRSC COUNCIL</span>
+            </div>
+
+            <p class="text-purple-300/60 text-xs sm:text-sm font-medium">
+                © 2026 Inter-Religious Solidarity Council. Dignity for All.
+            </p>
+
+            <div class="flex flex-col items-center lg:items-end gap-6">
+                <div
+                    class="flex flex-wrap justify-center gap-6 sm:gap-10 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+                    <a href="#" class="hover:text-brand-teal transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Terms</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Newsletter</a>
+                </div>
+
+                <form
+                    class="flex w-full max-w-sm bg-white/5 border border-white/10 rounded-full p-1 focus-within:border-brand-teal/50 transition-all">
+                    <input type="email" placeholder="Email Address"
+                        class="bg-transparent border-none outline-none px-5 py-2 text-sm w-full placeholder:text-purple-300/30 text-white"
+                        required>
+                    <button type="submit"
+                        class="bg-brand-teal hover:bg-opacity-90 text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-full transition-all">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot .progress');
+            let currentSlide = 0;
+            const slideInterval = 5000; // 5 seconds per slide
+
+            function updateSlider() {
+                slides.forEach((slide, index) => {
+                    const img = slide.querySelector('img');
+                    if (index === currentSlide) {
+                        slide.classList.replace('opacity-0', 'opacity-100');
+                        img.classList.add('scale-110'); // Slow zoom effect start
+                        dots[index].style.transition = `width ${slideInterval}ms linear`;
+                        dots[index].style.width = '100%';
+                    } else {
+                        slide.classList.replace('opacity-100', 'opacity-0');
+                        img.classList.remove('scale-110');
+                        dots[index].style.transition = 'none';
+                        dots[index].style.width = '0%';
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            }
+
+            // Initialize first slide
+            updateSlider();
+            setInterval(nextSlide, slideInterval);
+        });
+    </script>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('-translate-x-full');
+            if (isOpen) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                // Change to Close icon
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+                document.body.classList.add('overflow-hidden'); // Prevent scroll
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                // Change back to Burger icon
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>`;
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+    </script>
+
+</body>
+
+</html>
