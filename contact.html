@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact IRSC | Inter-Religious Solidarity Council</title>
-    <link rel="icon" href="./assets/images/1.png" type="image/png">
+    <link rel="icon" href="./assets/images/IRSC logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -57,6 +57,13 @@
             box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
             /* ring-2 focus:ring-brand-primary/20 */
         }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED 0%, #00A3B1 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
     </style>
 </head>
 
@@ -83,12 +90,14 @@
                 <a href="news.html" class="hover:text-brand-primary transition-colors">News</a>
                 <a href="gallery.html" class="hover:text-brand-primary transition-colors">Gallery</a>
                 <a href="events.html" class="hover:text-brand-primary transition-colors">Events</a>
+                <a href="reports.html" class="hover:text-brand-primary transition-colors">Reports</a>
                 <a href="volunteer.html" class="hover:text-brand-primary transition-colors">Join Us</a>
                 <a href="contact.html" class="text-brand-primary underline underline-offset-4">Contact</a>
 
                 <a href="donate.html"
                     class="bg-brand-accent text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-orange-200 hover:bg-brand-deep hover:shadow-none transition-all">
-                    Donate
+                    <i class="fa-solid fa-hand-holding-heart group-hover:rotate-6 transition-transform"></i>
+                    </i> Donate
                 </a>
             </div>
 
@@ -109,13 +118,15 @@
             <a href="news.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">News</a>
             <a href="gallery.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Gallery</a>
             <a href="events.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Events</a>
+            <a href="reports.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Reports</a>
             <a href="volunteer.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Join
-                US</a>
+                Us</a>
             <a href="contact.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Contact</a>
 
             <a href="donate.html"
                 class="bg-brand-accent text-white px-10 py-4 rounded-full shadow-xl shadow-orange-900/20"
-                onclick="toggleMenu()">Donate</a>
+                onclick="toggleMenu()"><i
+                    class="fa-solid fa-hand-holding-heart group-hover:rotate-6 transition-transform"></i> Donate</a>
         </div>
     </div>
 
@@ -124,7 +135,7 @@
 
             <div class="text-center mb-16 space-y-4">
                 <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">Get in <span
-                        class="text-brand-primary">Touch.</span></h1>
+                        class="gradient-text">Touch</span></h1>
                 <p class="text-brand-deep/60 text-lg max-w-2xl mx-auto">Have questions about our interfaith initiatives
                     or want to collaborate? Our team is here to listen and engage.</p>
             </div>
@@ -132,7 +143,27 @@
             <div class="grid lg:grid-cols-2 gap-12 items-start">
 
                 <div class="space-y-6">
-                    <div class="bg-white p-8 rounded-[32px] border border-purple-100 flex gap-6 items-start">
+                    <div
+                        class="bg-white p-4 rounded-[32px] border border-purple-100 flex gap-6 items-start shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-1">Contact Us On</h3>
+                            <p class="text-brand-deep/50 font-semibold text-lg leading-relaxed">
+                                +91 0000 000 000
+                            </p>
+                            <p class="text-brand-deep/60 text-sm">
+                                Available Mon-Sat, 10 AM - 6 PM
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-[32px] border border-purple-100 flex gap-6 items-start">
                         <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -150,7 +181,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-[32px] border border-purple-100 flex gap-6 items-start">
+                    <div class="bg-white p-4 rounded-[32px] border border-purple-100 flex gap-6 items-start">
                         <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center shrink-0">
                             <svg class="w-6 h-6 text-brand-accent" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -165,7 +196,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-brand-deep p-8 rounded-[32px] text-white">
+                    <div class="bg-brand-deep p-4 rounded-[32px] text-white">
                         <h3 class="text-xl font-bold mb-4">Follow Our Mission</h3>
                         <div class="flex flex-wrap gap-4">
                             <a href="#" target="_blank"
@@ -199,8 +230,8 @@
                 </div>
 
                 <div
-                    class="bg-white rounded-[40px] p-6 md:p-6 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] border border-slate-50">
-                    <form action="#" class="space-y-4">
+                    class="bg-white rounded-[40px] p-8 md:p-8 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] border border-slate-50">
+                    <form action="#" class="space-y-5">
 
                         <div class="grid md:grid-cols-2 gap-8">
                             <div class="space-y-1">
@@ -224,14 +255,16 @@
                         <div class="space-y-1">
                             <label
                                 class="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest ml-1">Nature
-                                of Inquiry</label>
+                                of Enquiry</label>
                             <div class="relative">
                                 <select
                                     class="w-full bg-[#F8FAFC] border-none rounded-2xl px-6 py-2 text-slate-600 outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all appearance-none cursor-pointer">
-                                    <option>General Inquiry</option>
+                                    <option selected disabled>Select Here</option>
+                                    <option>General Enquiry</option>
                                     <option>Partnership Proposal</option>
                                     <option>Join as Volunteer</option>
                                     <option>Press & Media</option>
+                                    <option>Other Enquiry</option>
                                 </select>
                                 <div
                                     class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
@@ -262,7 +295,7 @@
                         </div>
 
                         <button type="submit"
-                            class="group w-full bg-[#00A3B1] text-white py-2 rounded-2xl font-extrabold text-lg flex items-center justify-center gap-3 hover:brightness-105 hover:shadow-xl hover:shadow-cyan-500/20 transition-all">
+                            class="group w-full bg-[#00A3B1] text-white py-3 rounded-2xl font-extrabold text-lg flex items-center justify-center gap-3 hover:brightness-105 hover:shadow-xl hover:shadow-cyan-500/20 transition-all">
                             Send Secure Message
                             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -276,44 +309,182 @@
             </div>
         </div>
     </main>
+    <section class="relative py-12 px-4 lg:py-8 overflow-hidden bg-[#FDF6E3]">
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none">
+            <svg class="w-full h-full" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                <path d="M150,100 Q200,50 250,100 T350,100 M600,150 Q650,100 700,150 T800,150" fill="none"
+                    stroke="#1A202C" stroke-width="2" stroke-dasharray="4,8" />
+            </svg>
+        </div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <div class="lg:col-span-7 space-y-2">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-700 text-xs font-bold uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                        </span>
+                        Join Our Mission
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl font-black text-[#1A202C] leading-[1.1] tracking-tight">
+                        Become a Catalyst for Change & Stay <span class="text-yellow-600">Updated.</span>
+                    </h2>
+
+                    <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">
+                        Join the IRSC Council mission. Your expertise can help shape a harmonious world while staying
+                        informed about our latest impact.
+                    </p>
+
+                    <div class="pt-4">
+                        <a href="volunteer.html"
+                            class="group inline-flex items-center gap-3 bg-[#1A202C] text-white px-10 py-4 rounded-xl font-bold shadow-2xl hover:bg-gray-800 transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-solid fa-handshake group-hover:rotate-12 transition-transform"></i>
+                            Get Involved Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-[32px] border border-white shadow-2xl">
+                        <h4 class="text-2xl font-bold text-gray-800 mb-6">Be a Part of <span
+                                class="gradient-text text-3xl ml-2">IRSC</span></h4>
+
+                        <form class="space-y-4">
+                            <div class="relative">
+                                <input type="email" placeholder="Enter your email address"
+                                    class="w-full px-6 py-4 bg-white/80 border-2 border-gray-100 rounded-2xl outline-none focus:border-yellow-500 transition-all duration-300 text-gray-700 shadow-inner"
+                                    required>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-4 bg-yellow-500 hover:bg-yellow-600 text-[#fff] font-black rounded-2xl shadow-lg shadow-yellow-500/30 transition-all duration-300 transform active:scale-95">
+                                SUBSCRIBE NOW
+                            </button>
+                        </form>
+
+                        <div class="mt-6 flex items-center gap-3 text-xs text-gray-500">
+                            <div class="h-1 w-1 rounded-full bg-green-500"></div>
+                            <span>Join Now, 5000+ change-makers already subscribed.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <footer class="py-12 sm:py-16 bg-brand-deep text-white">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center lg:flex-row justify-between gap-10 text-center lg:text-left">
 
             <div class="flex items-center gap-4">
-                <div class="w-20 h-20 rounded-full  border border-white/20">
+                <div class="w-20 h-20 rounded-full border border-white/20">
                     <img src="./assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
                 </div>
                 <span class="text-lg sm:text-xl font-bold tracking-widest uppercase">IRSC COUNCIL</span>
             </div>
 
-            <p class="text-purple-300/60 text-xs sm:text-sm font-medium">
+            <p class="text-purple-300/60 text-xs sm:text-sm font-medium order-3 lg:order-none">
                 © 2026 Inter-Religious Solidarity Council. Dignity for All.
             </p>
 
-            <div class="flex flex-col items-center lg:items-end gap-6">
+            <div class="flex flex-col items-center lg:items-end gap-8">
+
                 <div
                     class="flex flex-wrap justify-center gap-6 sm:gap-10 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
                     <a href="#" class="hover:text-brand-teal transition-colors">Privacy</a>
                     <a href="#" class="hover:text-brand-teal transition-colors">Terms</a>
                     <a href="#" class="hover:text-brand-teal transition-colors">Newsletter</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Next UI</a>
                 </div>
 
-                <form
-                    class="flex w-full max-w-sm bg-white/5 border border-white/10 rounded-full p-1 focus-within:border-brand-teal/50 transition-all">
-                    <input type="email" placeholder="Email Address"
-                        class="bg-transparent border-none outline-none px-5 py-2 text-sm w-full placeholder:text-purple-300/30 text-white"
-                        required>
-                    <button type="submit"
-                        class="bg-brand-teal hover:bg-opacity-90 text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-full transition-all">
-                        Subscribe
-                    </button>
-                </form>
+                <div class="flex items-center justify-center gap-4">
+                    <span class="text-white/80 font-medium text-sm md:text-base mr-2">
+                        Follow Us on:
+                    </span>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-[#1877F2] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="Instagram">
+                        <i class="fa-brands fa-instagram text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-black rounded-xl border border-white/10 flex items-center justify-center transition-all hover:brightness-125 active:scale-90 group"
+                        aria-label="X">
+                        <i class="fa-brands fa-x-twitter text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-[#FF0000] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="YouTube">
+                        <i class="fa-brands fa-youtube text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+                </div>
             </div>
 
         </div>
     </footer>
+    <div class="fixed bottom-6 right-6 z-[200] font-sans">
+        <button id="comment-trigger" style="box-shadow: 0 0 4px #F59E0B;"
+            class="bg-brand-primary text-white flex items-center gap-3 px-5 py-1 rounded-full shadow-2xl hover:bg-brand-accent hover:-translate-y-1 transition-all duration-300 group">
+            <i class="fa-solid fa-comment-dots text-1xl animate-bounce"></i>
+            <span class="font-bold tracking-wide">Leave a Comment</span>
+        </button>
+
+        <div id="comment-panel"
+            class="hidden absolute bottom-20 right-0 w-[320px] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-purple-100 flex flex-col overflow-hidden transform transition-all duration-300 scale-95 origin-bottom-right">
+
+            <div class="bg-brand-deep p-4 text-white flex justify-between items-center">
+                <h3 class="font-bold">Share your thoughts</h3>
+                <button id="close-comment" class="hover:bg-white/10 p-1.5 rounded-full transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 space-y-4">
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Your Name</label>
+                    <input type="text" id="user-name" placeholder="E.g. John Doe"
+                        class="w-full px-4 py-2.5 mt-1 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none transition-all text-sm">
+                </div>
+
+                <div class="relative">
+                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Message</label>
+                    <textarea id="user-comment" rows="4" placeholder="Write something nice..."
+                        class="w-full px-4 py-3 mt-1 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none resize-none text-sm"></textarea>
+
+                    <button id="emoji-btn"
+                        class="absolute right-3 bottom-4 text-xl hover:scale-110 transition-transform hover:grayscale-0">
+                        😊
+                    </button>
+
+                    <div id="emoji-panel"
+                        class="hidden absolute bottom-full right-0 mb-2 bg-white border border-slate-100 shadow-2xl rounded-2xl p-3 grid grid-cols-5 gap-2 w-48 z-[210]">
+                    </div>
+                </div>
+
+                <button id="submit-comment"
+                    class="w-full bg-brand-primary text-white font-bold py-3 rounded-xl hover:bg-brand-teal shadow-lg shadow-purple-100 transition-all flex items-center justify-center gap-2">
+                    <span>Send Comment</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/comment.js"></script>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News & Updates | IRSC Solidarity</title>
-    <link rel="icon" href="assets/images/1.png" type="image/png">
+    <link rel="icon" href="assets/images/IRSC logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <script>
@@ -21,6 +22,7 @@
                             accent: '#F59E0B',
                             teal: '#00A3B1',
                             surface: '#FAF9FF',
+                            like: '#fff',
                         }
                     }
                 }
@@ -34,12 +36,38 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED 0%, #00A3B1 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+
         .mobile-menu-open {
             overflow: hidden;
         }
 
         #mobile-menu {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 163, 177, 0.3);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 163, 177, 0.6);
         }
     </style>
 </head>
@@ -67,22 +95,22 @@
                 <a href="news.html" class="text-brand-primary underline underline-offset-4">News</a>
                 <a href="gallery.html" class="hover:text-brand-primary transition-colors">Gallery</a>
                 <a href="events.html" class="hover:text-brand-primary transition-colors">Events</a>
+                <a href="reports.html" class="hover:text-brand-primary transition-colors">Reports</a>
                 <a href="volunteer.html" class="hover:text-brand-primary transition-colors">Join Us</a>
                 <a href="contact.html" class="hover:text-brand-primary transition-colors">Contact</a>
 
                 <a href="donate.html"
                     class="bg-brand-accent text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-orange-200 hover:bg-brand-deep hover:shadow-none transition-all">
-                    Donate
+                    <i class="fa-solid fa-hand-holding-heart group-hover:rotate-6 transition-transform"></i>
+                    </i> Donate
                 </a>
             </div>
-
             <button id="menu-toggle" class="lg:hidden p-2 text-brand-deep focus:outline-none" aria-label="Toggle Menu">
                 <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
                     </path>
                 </svg>
             </button>
-        </div>
     </nav>
 
     <div id="mobile-menu"
@@ -93,22 +121,24 @@
             <a href="news.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">News</a>
             <a href="gallery.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Gallery</a>
             <a href="events.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Events</a>
+            <a href="reports.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Reports</a>
             <a href="volunteer.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Join
                 Us</a>
             <a href="contact.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Contact</a>
 
             <a href="donate.html"
                 class="bg-brand-accent text-white px-10 py-4 rounded-full shadow-xl shadow-orange-900/20"
-                onclick="toggleMenu()">Donate</a>
+                onclick="toggleMenu()"><i
+                    class="fa-solid fa-hand-holding-heart group-hover:rotate-6 transition-transform"></i> Donate</a>
         </div>
     </div>
 
-    <header class="pt-40 pb-16 px-4">
+    <header class="pt-40 pb-14 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div class="max-w-2xl">
+                <div class="max-w-8xl">
                     <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">Voices of <span
-                            class="text-brand-primary">Conscience.</span></h1>
+                            class="gradient-text">Conscience.</span></h1>
                     <p class="text-slate-500 text-lg">Updates from our thematic discussions and inter-community
                         engagements across Mumbai.</p>
                 </div>
@@ -121,129 +151,464 @@
         </div>
     </header>
 
-    <main class="pb-24 px-4">
+    <main class="pb-20 px-4">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <article class="news-card group">
-                <div class="h-65 overflow-hidden">
-                    <img src="./assets/images/news/4.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="p-8">
-                    <div
-                        class="flex items-center gap-3 mb-4 text-[10px] font-extrabold text-brand-teal uppercase tracking-widest">
-                        <span>Thematic Discussion</span>
-                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <span>Feb 2026</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-brand-primary transition-colors">Baha'i
-                        Principles for the Message of Peace</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-6">An inter-religious meeting was organized by
-                        the Inter-Religious Solidarity Council at the Baha'i Centre. During this event, eminent speakers
-                        from various religions presented their views on the common teachings within religious principles
-                        regarding global peace.</p>
-                    <a href="#" class="inline-flex items-center gap-2 font-bold text-sm text-brand-primary group/link">
-                        Read More <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </article>
+            <div class="p-2">
+                <article
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group max-w-sm mx-auto transition-all duration-300 hover:shadow-2xl">
 
-            <article class="news-card group">
-                <div class="h-65 overflow-hidden">
-                    <img src="./assets/images/news/6.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="p-8">
-                    <div
-                        class="flex items-center gap-3 mb-4 text-[10px] font-extrabold text-brand-teal uppercase tracking-widest">
-                        <span>Interfaith Festivals</span>
-                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <span>Jan 2026</span>
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="./assets/images/news/4.jpeg" alt="Baha'i Principles Discussion"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-brand-primary transition-colors">Interfaith
-                        meets pays tributes to Pahalgham attack victims</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-6">How IRSC uses interfaith festivals to
-                        cultivate empathy and spread messages of solidarity and compassion.</p>
-                    <a href="#" class="inline-flex items-center gap-2 font-bold text-sm text-brand-primary group/link">
-                        Read More <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </article>
 
-            <article class="news-card group">
-                <div class="h-65 overflow-hidden">
-                    <img src="./assets/images/news/5.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="p-8">
-                    <div
-                        class="flex items-center gap-3 mb-4 text-[10px] font-extrabold text-brand-teal uppercase tracking-widest">
-                        <span>Community Service</span>
-                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
-                        <span>Dec 2025</span>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span
+                                class="bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wide">
+                                News
+                            </span>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm">
+                                <i class="fa-regular fa-calendar-days text-gray-900"></i>
+                                <span class="font-medium">Feb 11, 2026</span>
+                            </div>
+                        </div>
+
+                        <h3
+                            class="text-xl font-extrabold text-gray-900 mb-3 leading-snug transition-colors group-hover:text-blue-700">
+                            Baha'i Principles for the Message of Peace
+                        </h3>
+
+                        <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-[11px] text-gray-400 font-bold">
+                                Posted By: <span class="text-gray-700">IRSC Council</span>
+                            </div>
+
+                            <a href="#"
+                                class="inline-flex items-center gap-1 font-bold text-sm text-blue-600 hover:text-blue-800 transition-all group/link">
+                                Read More
+                                <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 group-hover:text-brand-primary transition-colors">Embrace the
-                        Baha'i principle of independent truth-seeking for lasting harmony.</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Ongoing solidarity actions with religious
-                        institutions to undertake socially relevant services for the common good.</p>
-                    <a href="#" class="inline-flex items-center gap-2 font-bold text-sm text-brand-primary group/link">
-                        Read More <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </article>
+                </article>
+            </div>
+
+            <div class="p-2">
+                <article
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group max-w-sm mx-auto transition-all duration-300 hover:shadow-2xl">
+
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="./assets/images/news/6.jpg" alt="Interfaith meets"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span
+                                class="bg-yellow-400 text-gray-900 text-[11px] font-black px-3 py-1 rounded-sm uppercase tracking-wider">
+                                News
+                            </span>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm font-medium">
+                                <i class="fa-regular fa-calendar-days text-gray-900"></i>
+                                <span>Jan 15, 2026</span>
+                            </div>
+                        </div>
+
+                        <h3
+                            class="text-xl font-extrabold text-gray-900 mb-3 leading-tight transition-colors group-hover:text-blue-700">
+                            Interfaith meets pays tributes to Pahalgham attack victims
+                        </h3>
+                        <div class="pt-4 border-t border-gray-50 flex justify-between items-center">
+                            <div class="text-[11px] text-gray-400 font-bold">
+                                Posted By: <span class="text-gray-700">IRSC Council</span>
+                            </div>
+
+                            <a href="#"
+                                class="inline-flex items-center gap-1 font-extrabold text-sm text-blue-600 hover:text-blue-800 transition-all group/link">
+                                Read More
+                                <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="p-2">
+                <article
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 group max-w-sm mx-auto transition-all duration-300 hover:shadow-2xl">
+
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="./assets/images/news/5.jpeg" alt="Community Service"
+                            class="w-full h-full object-fit transition-transform duration-700 group-hover:scale-110">
+                    </div>
+
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span
+                                class="bg-yellow-400 text-gray-900 text-[11px] font-black px-3 py-1 rounded-sm uppercase tracking-wider">
+                                News
+                            </span>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm font-medium">
+                                <i class="fa-regular fa-calendar-days text-gray-900"></i>
+                                <span>Dec 22, 2025</span>
+                            </div>
+                        </div>
+
+                        <h3
+                            class="text-xl font-extrabold text-gray-900 mb-3 leading-tight transition-colors group-hover:text-blue-700">
+                            Embrace the Baha'i principle for lasting harmony.
+                        </h3>
+
+                        <div class="pt-4 border-t border-gray-50 flex justify-between items-center">
+                            <div class="text-[11px] text-gray-400 font-bold">
+                                Posted By: <span class="text-gray-700">IRSC Council</span>
+                            </div>
+
+                            <a href="#"
+                                class="inline-flex items-center gap-1 font-extrabold text-sm text-blue-600 hover:text-blue-800 transition-all group/link">
+                                Read More
+                                <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
         </div>
     </main>
+    <!-- IRSC Media Links Directory Section -->
+    <section class="w-full bg-[#0a0a0a] py-16 px-4 sm:px-4 lg:px-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+
+            <!-- Section Header -->
+            <div class="mb-12 border-l-4 border-brand-teal pl-6">
+                <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter">
+                    Media <span class="text-brand-teal">Archives</span>
+                </h2>
+                <p class="text-gray-500 mt-2 font-medium">Direct access to news reports and official releases. Scroll to
+                    explore more.</p>
+            </div>
+
+            <!-- Scrollable Container Wrapper -->
+            <div class="relative">
+                <!-- Scrollable Area: Height is calculated to show roughly 3 items (approx 400px-450px) -->
+                <div class="space-y-2 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
+
+                    <!-- Link Item 1 -->
+                    <a href="https://example.com/news1" target="_blank"
+                        class="group flex flex-col md:flex-row md:items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.07] hover:border-brand-teal/30 transition-all duration-300">
+                        <div class="flex items-center gap-5">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-brand-teal group-hover:bg-brand-teal group-hover:text-black transition-colors duration-300">
+                                <i class="fa-solid fa-link text-lg"></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-white text-lg font-bold group-hover:text-brand-teal transition-colors tracking-tight">
+                                    The Times of India: IRSC's initiative for Communal Harmony in 2024
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest font-semibold">Published:
+                                    Jan 15, 2024 • Newspaper</p>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 md:mt-0 flex items-center gap-2 text-brand-teal font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            VISIT SOURCE <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </a>
+
+                    <!-- Link Item 2 -->
+                    <a href="https://example.com/news2" target="_blank"
+                        class="group flex flex-col md:flex-row md:items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.07] hover:border-brand-teal/30 transition-all duration-300">
+                        <div class="flex items-center gap-5">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+                                <i class="fa-brands fa-youtube text-lg"></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-white text-lg font-bold group-hover:text-brand-teal transition-colors tracking-tight">
+                                    NDTV 24x7: Interview with IRSC President on Peace Building
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest font-semibold">Published:
+                                    Feb 10, 2024 • Video Report</p>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 md:mt-0 flex items-center gap-2 text-brand-teal font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            WATCH VIDEO <i class="fa-solid fa-play"></i>
+                        </div>
+                    </a>
+
+                    <!-- Link Item 3 -->
+                    <a href="https://example.com/news3" target="_blank"
+                        class="group flex flex-col md:flex-row md:items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.07] hover:border-brand-teal/30 transition-all duration-300">
+                        <div class="flex items-center gap-5">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-blue-400 group-hover:bg-blue-400 group-hover:text-white transition-colors duration-300">
+                                <i class="fa-solid fa-file-invoice text-lg"></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-white text-lg font-bold group-hover:text-brand-teal transition-colors tracking-tight">
+                                    Hindustan Times: Annual Solidarity Conference Highlights
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest font-semibold">Published:
+                                    March 05, 2024 • Press Release</p>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 md:mt-0 flex items-center gap-2 text-brand-teal font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            READ MORE <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                    </a>
+
+                    <!-- Link Item 4 (Visible on scroll) -->
+                    <a href="https://example.com/news4" target="_blank"
+                        class="group flex flex-col md:flex-row md:items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.07] hover:border-brand-teal/30 transition-all duration-300">
+                        <div class="flex items-center gap-5">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-colors duration-300">
+                                <i class="fa-solid fa-microphone text-lg"></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-white text-lg font-bold group-hover:text-brand-teal transition-colors tracking-tight">
+                                    AIR News: IRSC's Role in National Integration
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest font-semibold">Published:
+                                    April 12, 2024 • Radio Interview</p>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 md:mt-0 flex items-center gap-2 text-brand-teal font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            LISTEN NOW <i class="fa-solid fa-headphones"></i>
+                        </div>
+                    </a>
+
+                    <!-- Link Item 5 (Visible on scroll) -->
+                    <a href="#"
+                        class="group flex flex-col md:flex-row md:items-center justify-between p-6 bg-white/[0.03] border border-white/5 rounded-2xl hover:bg-white/[0.07] hover:border-brand-teal/30 transition-all duration-300">
+                        <div class="flex items-center gap-5">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-deep flex items-center justify-center text-teal-400 group-hover:bg-teal-400 group-hover:text-black transition-colors duration-300">
+                                <i class="fa-solid fa-newspaper text-lg"></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-white text-lg font-bold group-hover:text-brand-teal transition-colors tracking-tight">
+                                    Indian Express: Inter-faith Harmony Award Winner
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest font-semibold">Published:
+                                    May 20, 2024 • Feature</p>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-4 md:mt-0 flex items-center gap-2 text-brand-teal font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                            READ ARTICLE <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- Visual Gradient Fade (Indicates more content) -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="relative py-12 px-4 lg:py-8 overflow-hidden bg-[#FDF6E3]">
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none">
+            <svg class="w-full h-full" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                <path d="M150,100 Q200,50 250,100 T350,100 M600,150 Q650,100 700,150 T800,150" fill="none"
+                    stroke="#1A202C" stroke-width="2" stroke-dasharray="4,8" />
+            </svg>
+        </div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <div class="lg:col-span-7 space-y-2">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-700 text-xs font-bold uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                        </span>
+                        Join Our Mission
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl font-black text-[#1A202C] leading-[1.1] tracking-tight">
+                        Become a Catalyst for Change & Stay <span class="text-yellow-600">Updated.</span>
+                    </h2>
+
+                    <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">
+                        Join the IRSC Council mission. Your expertise can help shape a harmonious world while staying
+                        informed about our latest impact.
+                    </p>
+
+                    <div class="pt-4">
+                        <a href="volunteer.html"
+                            class="group inline-flex items-center gap-3 bg-[#1A202C] text-white px-10 py-4 rounded-xl font-bold shadow-2xl hover:bg-gray-800 transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-solid fa-handshake group-hover:rotate-12 transition-transform"></i>
+                            Get Involved Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-[32px] border border-white shadow-2xl">
+                        <h4 class="text-2xl font-bold text-gray-800 mb-6">Be a Part of <span
+                                class="gradient-text text-3xl ml-2">IRSC</span></h4>
+
+                        <form class="space-y-4">
+                            <div class="relative">
+                                <input type="email" placeholder="Enter your email address"
+                                    class="w-full px-6 py-4 bg-white/80 border-2 border-gray-100 rounded-2xl outline-none focus:border-yellow-500 transition-all duration-300 text-gray-700 shadow-inner"
+                                    required>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-4 bg-yellow-500 hover:bg-yellow-600 text-[#fff] font-black rounded-2xl shadow-lg shadow-yellow-500/30 transition-all duration-300 transform active:scale-95">
+                                SUBSCRIBE NOW
+                            </button>
+                        </form>
+
+                        <div class="mt-6 flex items-center gap-3 text-xs text-gray-500">
+                            <div class="h-1 w-1 rounded-full bg-green-500"></div>
+                            <span>Join Now, 5000+ change-makers already subscribed.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <footer class="py-12 sm:py-16 bg-brand-deep text-white">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center lg:flex-row justify-between gap-10 text-center lg:text-left">
 
             <div class="flex items-center gap-4">
-                <div class="w-20 h-20 rounded-full  border border-white/20">
+                <div class="w-20 h-20 rounded-full border border-white/20">
                     <img src="./assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
                 </div>
                 <span class="text-lg sm:text-xl font-bold tracking-widest uppercase">IRSC COUNCIL</span>
             </div>
 
-            <p class="text-purple-300/60 text-xs sm:text-sm font-medium">
+            <p class="text-purple-300/60 text-xs sm:text-sm font-medium order-3 lg:order-none">
                 © 2026 Inter-Religious Solidarity Council. Dignity for All.
             </p>
 
-            <div class="flex flex-col items-center lg:items-end gap-6">
+            <div class="flex flex-col items-center lg:items-end gap-8">
+
                 <div
                     class="flex flex-wrap justify-center gap-6 sm:gap-10 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
                     <a href="#" class="hover:text-brand-teal transition-colors">Privacy</a>
                     <a href="#" class="hover:text-brand-teal transition-colors">Terms</a>
                     <a href="#" class="hover:text-brand-teal transition-colors">Newsletter</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Next UI</a>
                 </div>
 
-                <form
-                    class="flex w-full max-w-sm bg-white/5 border border-white/10 rounded-full p-1 focus-within:border-brand-teal/50 transition-all">
-                    <input type="email" placeholder="Email Address"
-                        class="bg-transparent border-none outline-none px-5 py-2 text-sm w-full placeholder:text-purple-300/30 text-white"
-                        required>
-                    <button type="submit"
-                        class="bg-brand-teal hover:bg-opacity-90 text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-full transition-all">
-                        Subscribe
-                    </button>
-                </form>
+                <div class="flex items-center justify-center gap-4">
+                    <span class="text-white/80 font-medium text-sm md:text-base mr-2">
+                        Follow Us on:
+                    </span>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-[#1877F2] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="Instagram">
+                        <i class="fa-brands fa-instagram text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-black rounded-xl border border-white/10 flex items-center justify-center transition-all hover:brightness-125 active:scale-90 group"
+                        aria-label="X">
+                        <i class="fa-brands fa-x-twitter text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-[#FF0000] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="YouTube">
+                        <i class="fa-brands fa-youtube text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+                </div>
             </div>
 
         </div>
     </footer>
+    <div class="fixed bottom-6 right-6 z-[200] font-sans">
+        <button id="comment-trigger" style="box-shadow: 0 0 4px #F59E0B;"
+            class="bg-brand-primary text-white flex items-center gap-3 px-5 py-1 rounded-full shadow-2xl hover:bg-brand-accent hover:-translate-y-1 transition-all duration-300 group">
+            <i class="fa-solid fa-comment-dots text-1xl animate-bounce"></i>
+            <span class="font-bold tracking-wide">Leave a Comment</span>
+        </button>
+
+        <div id="comment-panel"
+            class="hidden absolute bottom-20 right-0 w-[320px] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-purple-100 flex flex-col overflow-hidden transform transition-all duration-300 scale-95 origin-bottom-right">
+
+            <div class="bg-brand-deep p-4 text-white flex justify-between items-center">
+                <h3 class="font-bold">Share your thoughts</h3>
+                <button id="close-comment" class="hover:bg-white/10 p-1.5 rounded-full transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 space-y-4">
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Your Name</label>
+                    <input type="text" id="user-name" placeholder="E.g. John Doe"
+                        class="w-full px-4 py-2.5 mt-1 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none transition-all text-sm">
+                </div>
+
+                <div class="relative">
+                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Message</label>
+                    <textarea id="user-comment" rows="4" placeholder="Write something nice..."
+                        class="w-full px-4 py-3 mt-1 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none resize-none text-sm"></textarea>
+
+                    <button id="emoji-btn"
+                        class="absolute right-3 bottom-4 text-xl hover:scale-110 transition-transform hover:grayscale-0">
+                        😊
+                    </button>
+
+                    <div id="emoji-panel"
+                        class="hidden absolute bottom-full right-0 mb-2 bg-white border border-slate-100 shadow-2xl rounded-2xl p-3 grid grid-cols-5 gap-2 w-48 z-[210]">
+                    </div>
+                </div>
+
+                <button id="submit-comment"
+                    class="w-full bg-brand-primary text-white font-bold py-3 rounded-xl hover:bg-brand-teal shadow-lg shadow-purple-100 transition-all flex items-center justify-center gap-2">
+                    <span>Send Comment</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/comment.js"></script>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');

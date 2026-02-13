@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparency & Reports | IRSC NGO</title>
+    <link rel="icon" href="./assets/images/IRSC logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            deep: '#2D1B4E',
+                            primary: '#6D28D9',
+                            like: '#10b981',
+                            accent: '#F59E0B',
+                            teal: '#00A3B1',
+                            surface: '#FAF9FF',
+                            card: '#ffffff'
+                        }
+                    },
+                    borderRadius: {
+                        '3xl': '1.5rem',
+                        '4xl': '2.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF9FF;
+        }
+
+        .glass-nav {
+            background: #faf9ffe6;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5 0%, #10b981 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .report-card:hover .report-image {
+            transform: scale(1.05);
+        }
+
+        /* Timeline Custom Styling */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #cbd5e1;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <nav class="fixed top-0 w-full glass-nav z-[110] border-b border-purple-100 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-16 h-16 rounded-full border-2 border-brand-primary p-0.5 overflow-hidden">
+                    <img src="./assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter leading-none">IR<span
+                            class="text-brand-primary">SC</span></span>
+                    <span class="text-[14px] font-bold text-slate-600">Inter-Religious
+                        Solidarity Council</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 font-semibold text-[14px] tracking-wide">
+                <a href="index.html" class="hover:text-brand-primary transition-colors">Home</a>
+                <a href="about.html" class="hover:text-brand-primary transition-colors">About</a>
+                <a href="news.html" class="hover:text-brand-primary transition-colors">News</a>
+                <a href="gallery.html" class="hover:text-brand-primary transition-colors">Gallery</a>
+                <a href="events.html" class="hover:text-brand-primary transition-colors">Events</a>
+                <a href="reports.html" class="text-brand-primary underline underline-offset-4">Reports</a>
+                <a href="volunteer.html" class="hover:text-brand-primary transition-colors">Join Us</a>
+                <a href="contact.html" class="thover:text-brand-primary transition-colors">Contact</a>
+
+                <a href="donate.html"
+                    class="bg-brand-accent text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-orange-200 hover:bg-brand-deep hover:shadow-none transition-all">
+                    <i class="fa-solid fa-hand-holding-heart group-hover:rotate-6 transition-transform"></i>
+                    </i> Donate
+                </a>
+            </div>
+
+            <button id="menu-toggle" class="lg:hidden p-2 text-brand-deep focus:outline-none" aria-label="Toggle Menu">
+                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-brand-deep z-[105] flex flex-col items-center justify-center -translate-x-full lg:hidden">
+        <div class="flex flex-col gap-8 text-center text-white text-2xl font-bold">
+            <a href="index.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Home</a>
+            <a href="about.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">About</a>
+            <a href="news.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">News</a>
+            <a href="gallery.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Gallery</a>
+            <a href="events.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Events</a>
+            <a href="reports.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Reports</a>
+            <a href="volunteer.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Join
+                US</a>
+            <a href="contact.html" class="hover:text-brand-accent transition-colors" onclick="toggleMenu()">Contact</a>
+
+            <a href="donate.html"
+                class="bg-brand-accent text-white px-10 py-4 rounded-full shadow-xl shadow-orange-900/20"
+                onclick="toggleMenu()"><i
+                    class="fa-solid fa-hand-holding-heart group-hover:rotate-6 transition-transform"></i> Donate</a>
+        </div>
+    </div>
+
+    <main class="mt-28 mb-20">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-6 text-center mb-16">
+            <span class="text-xs font-black uppercase tracking-[0.3em] text-brand-primary mb-4 block">Radical
+                Transparency</span>
+            <h1 class="text-4xl md:text-6xl font-black text-brand-deep mb-6 leading-tight">
+                Our Financial <span class="gradient-text">Accountability</span> & Impact.
+            </h1>
+            <p class="max-w-2xl mx-auto text-slate-500 text-lg leading-relaxed">
+                IRSC NGO believes in complete transparency. You can see the detailed account of every rupee and the
+                impact it creates right here.
+            </p>
+        </section>
+
+        <!-- Dynamic Dashboard Stats -->
+        <section id="stats" class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+            <div class="bg-white p-8 rounded-4xl shadow-sm border border-slate-100 flex flex-col items-center">
+                <div
+                    class="w-12 h-12 bg-indigo-50 text-brand-primary rounded-2xl flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="text-3xl font-black text-brand-deep">₹25,05,000+</h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Total Donations</p>
+            </div>
+            <div class="bg-white p-8 rounded-4xl shadow-sm border border-slate-100 flex flex-col items-center">
+                <div
+                    class="w-12 h-12 bg-emerald-50 text-brand-accent rounded-2xl flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3 class="text-3xl font-black text-brand-deep">450k+</h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Lives Impacted</p>
+            </div>
+            <div class="bg-white p-8 rounded-4xl shadow-sm border border-slate-100 flex flex-col items-center">
+                <div
+                    class="w-12 h-12 bg-amber-50 text-brand-gold rounded-2xl flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3 class="text-3xl font-black text-brand-deep">12+</h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Global Regions</p>
+            </div>
+            <div class="bg-white p-8 rounded-4xl shadow-sm border border-slate-100 flex flex-col items-center">
+                <div
+                    class="w-12 h-12 bg-slate-50 text-slate-600 rounded-2xl flex items-center justify-center mb-4 text-xl">
+                    <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <h3 class="text-3xl font-black text-brand-deep">A+</h3>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Transparency Rating</p>
+            </div>
+        </section>
+
+        <!-- Donation Growth Table -->
+        <section id="growth-table" class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-brand-primary font-black uppercase tracking-widest text-xs">Financial
+                        History</span>
+                    <h2 class="text-3xl font-black text-brand-deep mt-2">Donation Summary (2024 - Present)</h2>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-100 rounded-[2rem] shadow-sm overflow-hidden">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gradient-to-br from-indigo-600 to-indigo-900 border-b border-slate-100">
+                                <th class="px-8 py-6 text-[14px] font-black text-slate-100">
+                                    Year</th>
+                                <th class="px-8 py-6 text-[14px] font-white text-slate-100">
+                                    Total Funds Raised</th>
+                                <th class="px-8 py-6 text-[14px] font-white text-slate-100">
+                                    Donor Count</th>
+                                <th class="px-8 py-6 text-[14px] font-white text-slate-100 text-right">
+                                    Growth Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            <!-- 2026 (Current Year) -->
+                            <tr class="hover:bg-indigo-50/30 transition-colors group">
+                                <td class="px-8 py-6 font-black text-brand-deep">2026 <span
+                                        class="ml-2 text-[9px] bg-brand-primary text-white px-2 py-0.5 rounded-full">CURRENT</span>
+                                </td>
+                                <td class="px-8 py-6 font-bold text-slate-700">₹1,85,000+</td>
+                                <td class="px-8 py-6">
+                                    <span
+                                        class="bg-indigo-50 text-brand-primary text-[10px] font-black px-2.5 py-1 rounded-full">3,190+
+                                        Donors</span>
+                                </td>
+                                <td class="px-8 py-6 text-right">
+                                    <span class="text-slate-400 font-black">In Progress</span>
+                                </td>
+                            </tr>
+                            <!-- 2025 -->
+                            <tr class="hover:bg-emerald-50/30 transition-colors group">
+                                <td class="px-8 py-6 font-black text-brand-deep">2025</td>
+                                <td class="px-8 py-6 font-bold text-slate-700">₹14,30,000</td>
+                                <td class="px-8 py-6">
+                                    <span
+                                        class="bg-emerald-50 text-brand-like text-[10px] font-black px-2.5 py-1 rounded-full">24,100
+                                        Donors</span>
+                                </td>
+                                <td class="px-8 py-6 text-right">
+                                    <span class="text-brand-like font-black">+61%</span>
+                                </td>
+                            </tr>
+                            <!-- 2024 -->
+                            <tr class="hover:bg-amber-50/30 transition-colors group">
+                                <td class="px-8 py-6 font-black text-brand-deep">2024</td>
+                                <td class="px-8 py-6 font-bold text-slate-700">₹8,90,000</td>
+                                <td class="px-8 py-6">
+                                    <span
+                                        class="bg-amber-50 text-brand-accent text-[10px] font-black px-2.5 py-1 rounded-full">15,400
+                                        Donors</span>
+                                </td>
+                                <td class="px-8 py-6 text-right">
+                                    <span class="text-slate-400 font-black">Base Year</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualization Section -->
+        <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+            <!-- Resource Allocation Chart -->
+            <div class="lg:col-span-2 bg-white p-10 rounded-4xl shadow-sm border border-slate-100">
+                <div class="flex justify-between items-start mb-8">
+                    <div>
+                        <h2 class="text-2xl font-black text-brand-deep">Resource Allocation</h2>
+                        <p class="text-slate-400 text-sm">Funds distribution breakdown across major projects.</p>
+                    </div>
+                    <div class="bg-indigo-50 text-brand-primary px-4 py-1 rounded-full text-xs font-bold">FY 2025-26
+                    </div>
+                </div>
+                <div class="h-80 w-full relative">
+                    <canvas id="allocationChart"></canvas>
+                </div>
+            </div>
+            <!-- Financial Summary Box -->
+            <div class="bg-brand-deep p-10 rounded-4xl shadow-xl text-white flex flex-col justify-between">
+                <div>
+                    <h2 class="text-2xl font-black mb-2">Financial Summary</h2>
+                    <p class="text-slate-400 text-sm mb-8">Direct impact of every single contribution.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-2 h-12 bg-brand-primary rounded-full"></div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase">Program Expenses</p>
+                                <p class="text-xl font-bold">88.5% <span
+                                        class="text-xs text-brand-accent ml-2">Efficient</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-2 h-12 bg-brand-accent rounded-full"></div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase">Administration</p>
+                                <p class="text-xl font-bold">6.2% <span
+                                        class="text-xs text-slate-400 ml-2">Minimal</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-2 h-12 bg-brand-teal rounded-full"></div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase">Fundraising</p>
+                                <p class="text-xl font-bold">5.3% <span
+                                        class="text-xs text-slate-400 ml-2">Organic</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="mt-8 w-full bg-white/10 hover:bg-white/20 text-white py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all">Download
+                    Audit PDF</button>
+            </div>
+        </section>
+        <!-- Audit Reports Section -->
+        <section id="audit" class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px flex-1 bg-slate-200"></div>
+                <h2 class="text-2xl font-black text-brand-deep uppercase tracking-widest">Certified Audit Reports</h2>
+                <div class="h-px flex-1 bg-slate-200"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Audit File 1 -->
+                <div
+                    class="flex items-center justify-between p-8 bg-white border border-slate-100 rounded-3xl hover:border-brand-primary transition-all group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-2xl group-hover:bg-red-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-file-download"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-brand-deep text-lg">Financial Statement 2024-25</h4>
+                            <p class="text-sm text-slate-400">PDF • 4.2 MB • Verified Jan 2026</p>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-slate-50 text-slate-600 px-6 py-3 rounded-xl font-bold text-xs uppercase group-hover:bg-brand-deep group-hover:text-white transition-all">Download</button>
+                </div>
+                <!-- Audit File 2 -->
+                <div
+                    class="flex items-center justify-between p-8 bg-white border border-slate-100 rounded-3xl hover:border-brand-primary transition-all group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-14 h-14 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center text-2xl group-hover:bg-blue-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-brand-deep text-lg">Compliance Audit Report</h4>
+                            <p class="text-sm text-slate-400">PDF • 2.8 MB • Verified Dec 2025</p>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-slate-50 text-slate-600 px-6 py-3 rounded-xl font-bold text-xs uppercase group-hover:bg-brand-deep group-hover:text-white transition-all">Download</button>
+                </div>
+                <div
+                    class="flex items-center justify-between p-8 bg-white border border-slate-100 rounded-3xl hover:border-brand-primary transition-all group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-2xl group-hover:bg-red-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-file-download"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-brand-deep text-lg">Financial Statement 2024-25</h4>
+                            <p class="text-sm text-slate-400">PDF • 4.2 MB • Verified Jan 2026</p>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-slate-50 text-slate-600 px-6 py-3 rounded-xl font-bold text-xs uppercase group-hover:bg-brand-deep group-hover:text-white transition-all">Download</button>
+                </div>
+                <!-- Audit File 2 -->
+                <div
+                    class="flex items-center justify-between p-8 bg-white border border-slate-100 rounded-3xl hover:border-brand-primary transition-all group">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-14 h-14 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center text-2xl group-hover:bg-blue-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-brand-deep text-lg">Compliance Audit Report</h4>
+                            <p class="text-sm text-slate-400">PDF • 2.8 MB • Verified Dec 2025</p>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-slate-50 text-slate-600 px-6 py-3 rounded-xl font-bold text-xs uppercase group-hover:bg-brand-deep group-hover:text-white transition-all">Download</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Reports (Visual Content) -->
+        <section id="impact" class="max-w-7xl mx-auto px-4 mb-20">
+            <div class="mb-12">
+                <h2 class="text-3xl font-black text-brand-deep">Impact Gallery & Reports</h2>
+                <p class="text-slate-500 mt-2">See how your contributions look in action. English-documented reports for
+                    global accessibility.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Visual Report 1 -->
+                <div class="report-card group bg-white rounded-4xl overflow-hidden border border-slate-100 shadow-sm">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=800"
+                            alt="" class="report-image w-full h-full object-cover transition-all duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black uppercase">
+                            Education 2025</div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="font-black text-brand-deep text-lg mb-2">Primary Education Program</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-6">Detailed data on classroom construction
+                            and student enrollment figures for the last fiscal year.</p>
+                        <a href="#"
+                            class="text-brand-primary font-black text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">View
+                            Full Report <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Visual Report 2 -->
+                <div class="report-card group bg-white rounded-4xl overflow-hidden border border-slate-100 shadow-sm">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800"
+                            alt="" class="report-image w-full h-full object-cover transition-all duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black uppercase">
+                            Healthcare 2025</div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="font-black text-brand-deep text-lg mb-2">Medical Support Initiative</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-6">Financial breakdown of medicine
+                            procurement and medical camp logistics across 12 districts.</p>
+                        <a href="#"
+                            class="text-brand-primary font-black text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">View
+                            Full Report <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Visual Report 3 -->
+                <div class="report-card group bg-white rounded-4xl overflow-hidden border border-slate-100 shadow-sm">
+                    <div class="h-60 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&q=80&w=800"
+                            alt="" class="report-image w-full h-full object-cover transition-all duration-700">
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-black uppercase">
+                            Emergency 2024</div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="font-black text-brand-deep text-lg mb-2">Flood Recovery Audit</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed mb-6">Independent audit of emergency funds
+                            deployed during the coastal flood relief operation.</p>
+                        <a href="#"
+                            class="text-brand-primary font-black text-xs uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">View
+                            Full Report <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Radical Transparency CTA -->
+        <!-- For More Enquiry / Contact Us Section -->
+        <section id="contact-cta" class="max-w-8xl mx-auto px-6 mb-24">
+            <div
+                class="relative bg-gradient-to-br from-brand-deep via-indigo-950 to-indigo-900 rounded-[2.5rem] p-6 md:p-8 text-center overflow-hidden group">
+
+                <!-- Subtle Grid Pattern Overlay -->
+                <div class="absolute inset-0 opacity-[0.03]"
+                    style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;">
+                </div>
+
+                <div class="relative z-10 max-w-full mx-auto">
+
+                    <!-- Content (All English) -->
+                    <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight max-w-full">
+                        Have any questions? Reach out to <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-amber-300">Our
+                            Team</span>.
+                    </h2>
+
+                    <p class="text-indigo-100/80 text-base md:text-lg mb-6 leading-relaxed font-medium">
+                        We believe in radical transparency. If you have any inquiries regarding our financials,
+                        donation utilization, or upcoming initiatives, please don't hesitate to contact us.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                        <!-- Primary Action Link to Contact Page -->
+                        <a href="contact.html"
+                            class="w-full sm:w-auto bg-white text-brand-deep px-9 py-3 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-indigo-950/20 hover:bg-brand-accent hover:text-white hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
+                            Contact Us Now
+                            <i class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="mt-4 pt-2 border-t border-white/10 flex flex-wrap justify-center gap-4 opacity-60">
+                        <div
+                            class="flex items-center gap-2 text-xs text-indigo-100 uppercase tracking-widest font-bold">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            Response within 24 Hours
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-xs text-indigo-100 uppercase tracking-widest font-bold">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Secure Communication
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="relative py-12 px-4 lg:py-8 overflow-hidden bg-[#FDF6E3]">
+        <div class="absolute inset-0 opacity-[0.07] pointer-events-none select-none">
+            <svg class="w-full h-full" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                <path d="M150,100 Q200,50 250,100 T350,100 M600,150 Q650,100 700,150 T800,150" fill="none"
+                    stroke="#1A202C" stroke-width="2" stroke-dasharray="4,8" />
+            </svg>
+        </div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <div class="lg:col-span-7 space-y-2">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-700 text-xs font-bold uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                        </span>
+                        Join Our Mission
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl font-black text-[#1A202C] leading-[1.1] tracking-tight">
+                        Become a Catalyst for Change & Stay <span class="text-yellow-600">Updated.</span>
+                    </h2>
+
+                    <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">
+                        Join the IRSC Council mission. Your expertise can help shape a harmonious world while staying
+                        informed about our latest impact.
+                    </p>
+
+                    <div class="pt-4">
+                        <a href="volunteer.html"
+                            class="group inline-flex items-center gap-3 bg-[#1A202C] text-white px-10 py-4 rounded-xl font-bold shadow-2xl hover:bg-gray-800 transition-all duration-300 hover:-translate-y-1">
+                            <i class="fa-solid fa-handshake group-hover:rotate-12 transition-transform"></i>
+                            Get Involved Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-white/60 backdrop-blur-md p-8 md:p-10 rounded-[32px] border border-white shadow-2xl">
+                        <h4 class="text-2xl font-bold text-gray-800 mb-6">Be a Part of <span
+                                class="gradient-text text-3xl ml-2">IRSC</span></h4>
+
+                        <form class="space-y-4">
+                            <div class="relative">
+                                <input type="email" placeholder="Enter your email address"
+                                    class="w-full px-6 py-4 bg-white/80 border-2 border-gray-100 rounded-2xl outline-none focus:border-yellow-500 transition-all duration-300 text-gray-700 shadow-inner"
+                                    required>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-4 bg-yellow-500 hover:bg-yellow-600 text-[#fff] font-black rounded-2xl shadow-lg shadow-yellow-500/30 transition-all duration-300 transform active:scale-95">
+                                SUBSCRIBE NOW
+                            </button>
+                        </form>
+
+                        <div class="mt-6 flex items-center gap-3 text-xs text-gray-500">
+                            <div class="h-1 w-1 rounded-full bg-green-500"></div>
+                            <span>Join Now, 5000+ change-makers already subscribed.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 sm:py-16 bg-brand-deep text-white">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center lg:flex-row justify-between gap-10 text-center lg:text-left">
+
+            <div class="flex items-center gap-4">
+                <div class="w-20 h-20 rounded-full border border-white/20">
+                    <img src="./assets/images/IRSC logo.png" alt="Logo" class="w-full h-full object-cover rounded-full">
+                </div>
+                <span class="text-lg sm:text-xl font-bold tracking-widest uppercase">IRSC COUNCIL</span>
+            </div>
+
+            <p class="text-purple-300/60 text-xs sm:text-sm font-medium order-3 lg:order-none">
+                © 2026 Inter-Religious Solidarity Council. Dignity for All.
+            </p>
+
+            <div class="flex flex-col items-center lg:items-end gap-8">
+
+                <div
+                    class="flex flex-wrap justify-center gap-6 sm:gap-10 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+                    <a href="#" class="hover:text-brand-teal transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Terms</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Newsletter</a>
+                    <a href="#" class="hover:text-brand-teal transition-colors">Next UI</a>
+                </div>
+
+                <div class="flex items-center justify-center gap-4">
+                    <span class="text-white/80 font-medium text-sm md:text-base mr-2">
+                        Follow Us on:
+                    </span>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-[#1877F2] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="Instagram">
+                        <i class="fa-brands fa-instagram text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-black rounded-xl border border-white/10 flex items-center justify-center transition-all hover:brightness-125 active:scale-90 group"
+                        aria-label="X">
+                        <i class="fa-brands fa-x-twitter text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+
+                    <a href="#" target="_blank"
+                        class="w-10 h-10 bg-[#FF0000] rounded-xl flex items-center justify-center transition-all hover:brightness-110 active:scale-90 group"
+                        aria-label="YouTube">
+                        <i class="fa-brands fa-youtube text-sm transition-transform group-hover:scale-110"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fixed bottom-6 right-6 z-[200] font-sans">
+        <button id="comment-trigger" style="box-shadow: 0 0 4px #F59E0B;"
+            class="bg-brand-primary text-white flex items-center gap-3 px-5 py-1 rounded-full shadow-2xl hover:bg-brand-accent hover:-translate-y-1 transition-all duration-300 group">
+            <i class="fa-solid fa-comment-dots text-1xl animate-bounce"></i>
+            <span class="font-bold tracking-wide">Leave a Comment</span>
+        </button>
+
+        <div id="comment-panel"
+            class="hidden absolute bottom-20 right-0 w-[320px] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-purple-100 flex flex-col overflow-hidden transform transition-all duration-300 scale-95 origin-bottom-right">
+
+            <div class="bg-brand-deep p-4 text-white flex justify-between items-center">
+                <h3 class="font-bold">Share your thoughts</h3>
+                <button id="close-comment" class="hover:bg-white/10 p-1.5 rounded-full transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 space-y-4">
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Your Name</label>
+                    <input type="text" id="user-name" placeholder="E.g. John Doe"
+                        class="w-full px-4 py-2.5 mt-1 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none transition-all text-sm">
+                </div>
+
+                <div class="relative">
+                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Message</label>
+                    <textarea id="user-comment" rows="4" placeholder="Write something nice..."
+                        class="w-full px-4 py-3 mt-1 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none resize-none text-sm"></textarea>
+
+                    <button id="emoji-btn"
+                        class="absolute right-3 bottom-4 text-xl hover:scale-110 transition-transform hover:grayscale-0">
+                        😊
+                    </button>
+
+                    <div id="emoji-panel"
+                        class="hidden absolute bottom-full right-0 mb-2 bg-white border border-slate-100 shadow-2xl rounded-2xl p-3 grid grid-cols-5 gap-2 w-48 z-[210]">
+                    </div>
+                </div>
+
+                <button id="submit-comment"
+                    class="w-full bg-brand-primary text-white font-bold py-3 rounded-xl hover:bg-brand-teal shadow-lg shadow-purple-100 transition-all flex items-center justify-center gap-2">
+                    <span>Send Comment</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/comment.js"></script>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('-translate-x-full');
+            if (isOpen) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenu.classList.add('translate-x-0');
+                // Change to Close icon
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
+                document.body.classList.add('overflow-hidden'); // Prevent scroll
+            } else {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                // Change back to Burger icon
+                menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>`;
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+    </script>
+
+    <script>
+        // Chart for Resource Allocation
+        const ctx = document.getElementById('allocationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Direct Aid', 'Education', 'Health', 'Crisis Management', 'Advocacy'],
+                datasets: [{
+                    data: [45, 20, 15, 12, 8],
+                    backgroundColor: [
+                        '#4f46e5', // Indigo
+                        '#10b981', // Emerald
+                        '#f59e0b', // Amber
+                        '#6366f1', // Light Indigo
+                        '#94a3b8'  // Slate
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 20
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20,
+                            font: { size: 12, family: 'Plus Jakarta Sans', weight: '600' }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
