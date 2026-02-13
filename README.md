@@ -1,6 +1,6 @@
 IRSC is a premium, high-impact web platform designed for the Inter-Religious Solidarity Council (IRSC). It serves as a digital hub for global peace initiatives, documenting "Resilience Projects," and facilitating coordination between volunteers of different faiths and backgrounds.
 
-🌐 Live Vision
+🌐 Live Vision: https://gauravaswal98.github.io/Website-IRSC---Inter-Religious-Solidarity-Council/
 
 The platform aims to bridge the gap between local grassroots activism and global advocacy, providing a professional space to showcase social impact stories and peace grant milestones.
 
