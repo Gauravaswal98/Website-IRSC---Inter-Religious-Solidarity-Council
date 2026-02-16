@@ -155,6 +155,24 @@
         .animate-quote-loop {
             animation: slide-loop 12s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
         }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
     </style>
 </head>
 
@@ -460,7 +478,7 @@
                                 <label
                                     class="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Legal
                                     Name</label>
-                                <input type="text" placeholder="Full name"
+                                <input type="text" placeholder="Full name" name="name"
                                     class="w-full bg-slate-50 border-2 border-transparent rounded-xl sm:rounded-2xl px-5 sm:px-6 py-2 sm:py-2 text-brand-deep outline-none focus:border-brand-primary/20 focus:bg-white transition-all"
                                     required>
                             </div>
@@ -468,7 +486,7 @@
                                 <label
                                     class="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Email
                                     Address</label>
-                                <input type="email" placeholder="name@email.com"
+                                <input type="email" placeholder="name@email.com" name="email"
                                     class="w-full bg-slate-50 border-2 border-transparent rounded-xl sm:rounded-2xl px-5 sm:px-6 py-2 sm:py-2 text-brand-deep outline-none focus:border-brand-primary/20 focus:bg-white transition-all"
                                     required>
                             </div>
@@ -479,7 +497,7 @@
                                 <label
                                     class="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">WhatsApp
                                     Number</label>
-                                <input type="tel" placeholder="+91 XXXXX XXXXX"
+                                <input type="tel" placeholder="+91 XXXXX XXXXX" name="number"
                                     class="w-full bg-slate-50 border-2 border-transparent rounded-xl sm:rounded-2xl px-5 sm:px-6 py-2 sm:py-2 text-brand-deep outline-none focus:border-brand-primary/20 focus:bg-white transition-all"
                                     required>
                             </div>
@@ -487,7 +505,7 @@
                                 <label
                                     class="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">City
                                     / Location</label>
-                                <input type="text" placeholder="Your City"
+                                <input type="text" placeholder="Your City" name="city"
                                     class="w-full bg-slate-50 border-2 border-transparent rounded-xl sm:rounded-2xl px-5 sm:px-6 py-2 sm:py-2 text-brand-deep outline-none focus:border-brand-primary/20 focus:bg-white transition-all"
                                     required>
                             </div>
@@ -587,27 +605,27 @@
                                 class="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Availability</label>
                             <div class="flex flex-wrap gap-2 sm:gap-3">
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="time" class="peer sr-only" checked>
+                                    <input type="radio" name="time" value="Weekends" class="peer sr-only" checked>
                                     <span
                                         class="px-4 py-1 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl bg-slate-50 border-2 border-transparent peer-checked:border-brand-primary peer-checked:bg-purple-50 peer-checked:text-brand-primary transition-all block text-[11px] sm:text-sm font-bold">Weekends</span>
                                 </label>
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="time" class="peer sr-only">
+                                    <input type="radio" name="time" value="Weekdays" class="peer sr-only">
                                     <span
                                         class="px-4 py-2 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl bg-slate-50 border-2 border-transparent peer-checked:border-brand-primary peer-checked:bg-purple-50 peer-checked:text-brand-primary transition-all block text-[11px] sm:text-sm font-bold">Weekdays</span>
                                 </label>
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="time" class="peer sr-only">
+                                    <input type="radio" name="time" value="Remote" class="peer sr-only">
                                     <span
                                         class="px-4 py-2 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl bg-slate-50 border-2 border-transparent peer-checked:border-brand-primary peer-checked:bg-purple-50 peer-checked:text-brand-primary transition-all block text-[11px] sm:text-sm font-bold">Remote</span>
                                 </label>
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="time" class="peer sr-only">
+                                    <input type="radio" name="time" value="Full-time" class="peer sr-only">
                                     <span
                                         class="px-4 py-2 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl bg-slate-50 border-2 border-transparent peer-checked:border-brand-primary peer-checked:bg-purple-50 peer-checked:text-brand-primary transition-all block text-[11px] sm:text-sm font-bold">Full-Time</span>
                                 </label>
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="time" class="peer sr-only">
+                                    <input type="radio" name="time" value="Flexible" class="peer sr-only">
                                     <span
                                         class="px-4 py-2 sm:px-6 sm:py-3 rounded-lg sm:rounded-xl bg-slate-50 border-2 border-transparent peer-checked:border-brand-primary peer-checked:bg-purple-50 peer-checked:text-brand-primary transition-all block text-[11px] sm:text-sm font-bold">Flexible</span>
                                 </label>
@@ -617,7 +635,7 @@
                         <div class="space-y-1">
                             <label
                                 class="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] ml-2">Motivation</label>
-                            <textarea rows="3" placeholder="Why do you want to join?"
+                            <textarea rows="3" placeholder="Why do you want to join?" name="motivation"
                                 class="w-full bg-slate-50 border-2 border-transparent rounded-xl sm:rounded-2xl px-5 sm:px-6 py-3 sm:py-4 text-brand-deep outline-none focus:border-brand-primary/20 focus:bg-white transition-all resize-none text-sm sm:text-base"
                                 required></textarea>
                         </div>
@@ -770,53 +788,15 @@
         </div>
     </footer>
     <div class="fixed bottom-6 right-6 z-[200] font-sans">
-        <button id="comment-trigger" style="box-shadow: 0 0 4px #F59E0B;"
-            class="bg-brand-primary text-white flex items-center gap-3 px-5 py-1 rounded-full shadow-2xl hover:bg-brand-accent hover:-translate-y-1 transition-all duration-300 group">
-            <i class="fa-solid fa-comment-dots text-1xl animate-bounce"></i>
-            <span class="font-bold tracking-wide">Leave a Comment</span>
-        </button>
+        <a href="donate.html" class="block">
+            <button id="comment-trigger"
+                class="bg-brand-primary text-white flex flex-col items-center justify-center w-14 h-14 rounded-full shadow-2xl hover:bg-brand-accent transition-all duration-300 group animate-heartbeat">
 
-        <div id="comment-panel"
-            class="hidden absolute bottom-20 right-0 w-[320px] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-purple-100 flex flex-col overflow-hidden transform transition-all duration-300 scale-95 origin-bottom-right">
-
-            <div class="bg-brand-deep p-4 text-white flex justify-between items-center">
-                <h3 class="font-bold">Share your thoughts</h3>
-                <button id="close-comment" class="hover:bg-white/10 p-1.5 rounded-full transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="p-5 space-y-4">
-                <div>
-                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Your Name</label>
-                    <input type="text" id="user-name" placeholder="E.g. John Doe"
-                        class="w-full px-4 py-2.5 mt-1 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none transition-all text-sm">
-                </div>
-
-                <div class="relative">
-                    <label class="text-[10px] uppercase font-bold text-slate-400 ml-1">Message</label>
-                    <textarea id="user-comment" rows="4" placeholder="Write something nice..."
-                        class="w-full px-4 py-3 mt-1 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-brand-primary focus:bg-white outline-none resize-none text-sm"></textarea>
-
-                    <button id="emoji-btn"
-                        class="absolute right-3 bottom-4 text-xl hover:scale-110 transition-transform hover:grayscale-0">
-                        😊
-                    </button>
-
-                    <div id="emoji-panel"
-                        class="hidden absolute bottom-full right-0 mb-2 bg-white border border-slate-100 shadow-2xl rounded-2xl p-3 grid grid-cols-5 gap-2 w-48 z-[210]">
-                    </div>
-                </div>
-
-                <button id="submit-comment"
-                    class="w-full bg-brand-primary text-white font-bold py-3 rounded-xl hover:bg-brand-teal shadow-lg shadow-purple-100 transition-all flex items-center justify-center gap-2">
-                    <span>Send Comment</span>
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-            </div>
-        </div>
+                <i class="fa-solid fa-hand-holding-heart text-1xl"></i>
+                <span class="text-[8px] font-bold uppercase tracking-tight">Donate</span>
+            </button>
+        </a>
     </div>
-    <script src="./assets/js/comment.js"></script>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
@@ -858,6 +838,42 @@
                 e.target.reset();
             }, 1500);
         });
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwXWguEzrRlTRRVjRbHEhpM-MD2-4ks6LIhGQigAISccLXaZcGR62s1LweIC5oMQQGu/exec'
+        const form = document.forms['volunteer-form']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            const submitBtn = form.querySelector('button[type="submit"]')
+            submitBtn.disabled = true
+            submitBtn.innerHTML = "SENDING..."
+
+            // --- Checkboxes handle karne ka logic ---
+            const formData = new FormData(form)
+            const roles = []
+            // Sabhi checked "roles" ko array mein dalo
+            form.querySelectorAll('input[name="roles"]:checked').forEach(cb => {
+                roles.push(cb.nextElementSibling.innerText.trim())
+            })
+            // Purane roles data ko comma separated string se replace karo
+            formData.set('roles', roles.join(', '))
+            // ---------------------------------------
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    alert("Thank you! Your data and roles have been saved successfully. Welcome to IRSC!")
+                    submitBtn.disabled = false
+                    submitBtn.innerHTML = "SUBMIT APPLICATION"
+                    form.reset()
+                })
+                .catch(error => {
+                    alert("Oops! Something went wrong. Please try again.")
+                    submitBtn.disabled = false
+                    submitBtn.innerHTML = "SUBMIT APPLICATION"
+                })
+        })
     </script>
 </body>
 
